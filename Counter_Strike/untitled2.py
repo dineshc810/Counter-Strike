@@ -5,7 +5,6 @@ Created on Mon Aug  3 10:16:54 2020
 @author: Dinesh.Choudhary
 """
 
-import gun
 import player
 
 gun_dict={}
@@ -26,45 +25,27 @@ def search_player_in_dict(player_dict,input_):
 def input_player_type():
     input_=input().lower()
     return search_player_in_dict(player_dict,input_)
-    
-
-    
-def get_player():
+       
+def get_player_type():
     print("Enter the player type: " )
     for pt in player_dict:
         print(pt.__name__)
     player_type = input_player_type()
-    if player_type=='terrorist':
-        return get_terrorist() 
-    elif player_type=='CounterTerrorist':
-        return get_counterterrorist()
-    
-
-    
-def get_terrorist():
-    print("Enter the sub-player type: " )
-    for spt in player_dict[player.Terrorist]:
+    return get_player_sub_type(player_type.__name__,player_type)
+        
+def get_player_sub_type(a,b):
+    print(f'Enter the {a} type: ')
+    for spt in player_dict[b]:
         print(spt.__name__)
     player_sub_type = input_player_type() 
-    return player_sub_type
-        
-        
-def get_counterterrorist():                                                                 
-    print("Enter the sub-player type: " )
-    for spt in player_dict[player.CounterTerrorist]:
-        print(spt.__name__)
-    player_sub_type = input_player_type() 
-    return player_sub_type
-
-def print_user_details():
-    pass    
+    return a,player_sub_type.__name__
+         
+def print_user_details(x,y):
+    print(f'The player type is: {x} and player sub-type is : {y}')
     
-
-
-    
+  
 #main
-    
-get_player()
-
+x,y=get_player_type()
+print_user_details(x,y)
 
     
